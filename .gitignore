@@ -2,3 +2,4 @@
 build
 dist
 sentinel.egg-info
+.DS_Store
