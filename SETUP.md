@@ -11,9 +11,9 @@ keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
 
 ## SETUP ENV
 
-export OS_TOKEN=xyz
-export OS_URL=http://localhost:35357/v3
-export OS_IDENTITY_API_VERSION=3
+export OS_TOKEN=xyz  
+export OS_URL=http://localhost:35357/v3  
+export OS_IDENTITY_API_VERSION=3  
 
 ## BOOTSTRAP
 
@@ -21,11 +21,11 @@ keystone-manage bootstrap --bootstrap-password password --bootstrap-admin-url ht
 
 ## ADMIN ENV
 
-unset OS_TOKEN OS_URL
-export OS_USERNAME=admin
-export OS_PASSWORD=password
-export OS_PROJECT_NAME=admin
-export OS_USER_DOMAIN_NAME=Default
-export OS_PROJECT_DOMAIN_NAME=Default
-export OS_AUTH_URL=http://localhost:35357/v3
-export OS_IDENTITY_API_VERSION=3
+unset OS_TOKEN OS_URL  
+export OS_USERNAME=admin  
+export OS_PASSWORD=password  
+export OS_PROJECT_NAME=admin  
+export OS_USER_DOMAIN_NAME=Default  
+export OS_PROJECT_DOMAIN_NAME=Default  
+export OS_AUTH_URL=http://localhost:35357/v3  
+export OS_IDENTITY_API_VERSION=3  
