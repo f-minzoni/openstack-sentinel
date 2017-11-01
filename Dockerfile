@@ -22,9 +22,12 @@ RUN fpm -f -s python -t deb \
 FROM ubuntu:xenial
 
 RUN apt-get update && \
+    apt-get install -y software-properties-common curl telnet
+
+RUN add-apt-repository cloud-archive:ocata && \
+    apt-get update && \
     apt-get -y dist-upgrade && \
-    apt-get install -y software-properties-common curl telnet \
-    apache2 libapache2-mod-wsgi keystone \
+    apt-get install -y apache2 libapache2-mod-wsgi keystone \
     python-pecan python-keystoneclient python-novaclient \ 
     python-neutronclient python-cinderclient python-ceilometerclient \ 
     python-oslo.config python-stevedore \
@@ -38,6 +41,7 @@ RUN dpkg -i python-sentinel_0.0.1_all.deb
 
 ADD certs/ /etc/sentinel/ssl/easy-rsa/easyrsa3/pki/
 
+RUN rm /etc/apache2/sites-enabled/keystone.conf
 ADD etc/apache2/vhost.000.keystone.conf /etc/apache2/sites-enabled/000-keystone.conf
 ADD etc/apache2/apache.ports.conf /etc/apache2/ports.conf
 

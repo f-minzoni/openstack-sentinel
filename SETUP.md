@@ -9,6 +9,8 @@ docker-compose exec keystone bash
 
 keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
 
+keystone-manage credential_setup --keystone-user keystone --keystone-group keystone
+
 ## SETUP ENV
 
 export OS_TOKEN=xyz  
