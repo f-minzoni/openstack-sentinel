@@ -39,6 +39,7 @@ COPY --from=0 /src/sentinel/python-sentinel_0.0.1_all.deb .
 
 RUN dpkg -i python-sentinel_0.0.1_all.deb
 
+ADD etc/sentinel /etc/sentinel
 ADD certs/ /etc/sentinel/ssl/easy-rsa/easyrsa3/pki/
 
 RUN rm /etc/apache2/sites-enabled/keystone.conf
