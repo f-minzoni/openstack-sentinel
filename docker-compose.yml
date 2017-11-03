@@ -9,11 +9,10 @@ services:
 
   keystone:
     build: .
+    hostname: sentinel.example.com
     ports:
       - "35357:35357"
       - "5000:5000"
-    extra_hosts:
-      - "sentinel.example.com:127.0.0.1"
 
   rabbit:
     image: rabbitmq:3-alpine
