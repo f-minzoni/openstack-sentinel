@@ -77,7 +77,7 @@ class Clients(object):
                            user_domain_name=conf.identity.user_domain_name,
                            project_name=conf.identity.project_name,
                            project_domain_name=conf.identity.project_domain_name)
-        return session.Session(auth=auth)
+        return session.Session(auth=auth,verify=False)
 
     @classmethod
     def identity(cls):
