@@ -27,3 +27,13 @@ export OS_USER_DOMAIN_NAME=Default
 export OS_PROJECT_DOMAIN_NAME=Default  
 export OS_AUTH_URL=https://sentinel.example.com:35357/v3  
 export OS_IDENTITY_API_VERSION=3  
+
+## CONFIG
+
+openstack --insecure domain create sentinel.example.com
+
+vi /etc/sentinel/domain_map.json
+
+apache2ctl restart
+
+openstack --insecure role create --domain sentinel.example.com user

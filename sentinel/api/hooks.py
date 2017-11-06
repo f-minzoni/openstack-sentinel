@@ -51,6 +51,8 @@ class DomainHook(pecan.hooks.PecanHook):
         state.request.user = user
         # Try find a valid mapping from user to domain ID
         try:
+            # Get the domain
+            LOG.info('{} {}'.format(mapping, user))
             state.request.domain_id = mapping[user]
         except KeyError:
             pecan.abort(401)

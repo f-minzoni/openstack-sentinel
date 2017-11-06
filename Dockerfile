@@ -44,6 +44,7 @@ ADD certs/ /etc/sentinel/ssl/easy-rsa/easyrsa3/pki/
 RUN mkdir -p /var/log/sentinel && chown www-data /var/log/sentinel
 ADD scripts /root
 
+RUN rm /etc/apache2/sites-available/keystone.conf 
 RUN rm /etc/apache2/sites-enabled/keystone.conf
 ADD etc/apache2/vhost.000.keystone.conf /etc/apache2/sites-enabled/000-keystone.conf
 ADD etc/apache2/apache.ports.conf /etc/apache2/ports.conf

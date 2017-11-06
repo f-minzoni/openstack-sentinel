@@ -13,5 +13,5 @@ auth = v3.Password(auth_url='https://sentinel.example.com:5000/v3',
                    project_name='admin',
                    project_domain_name='Default')
 session = session.Session(auth=auth)
-keystone = client.Client(session=session)
+keystone = client.Client(session=session,insecure=True)
 keystone.inference_rules.create(sys.argv[1], sys.argv[2])
