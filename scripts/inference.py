@@ -6,7 +6,7 @@ from keystoneauth1 import session
 from keystoneauth1.identity import v3
 from keystoneclient.v3 import client
 
-auth = v3.Password(auth_url='http://localhost:5000/v3',
+auth = v3.Password(auth_url='https://sentinel.example.com:5000/v3',
                    username='admin',
                    password='password',
                    user_domain_name='Default',
