@@ -30,10 +30,10 @@ export OS_IDENTITY_API_VERSION=3
 
 ## CONFIG
 
-openstack --insecure domain create sentinel.example.com
+openstack --insecure domain create my.trusted.idp.com
 
 vi /etc/sentinel/domain_map.json
 
 apache2ctl restart
 
-openstack --insecure role create --domain sentinel.example.com user
+openstack --insecure role create --domain my.trusted.idp.com user
