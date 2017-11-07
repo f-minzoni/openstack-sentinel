@@ -63,7 +63,7 @@ session = session.Session(auth=auth,
                            '/etc/sentinel/ssl/easy-rsa/easyrsa3/pki/private/127.0.0.1.key'))
 identity = client.Client(session=session)
 
-project = identity.projects.create(name="project1", description="federated project", domain="sentinel.example.com", enabled=True)
+project = identity.projects.create(name="project1", description="federated project", domain="my.trusted.idp.com", enabled=True)
 
-user = identity.users.create(name="user1", domain="sentinel.example.com", password="password", enabled=True)
+user = identity.users.create(name="user1", domain="my.trusted.idp.com", password="password", enabled=True)
 ```
