@@ -36,4 +36,15 @@ vi /etc/sentinel/domain_map.json
 
 apache2ctl restart
 
+## USAGE
+
+openstack --insecure project create  --domain my.trusted.idp.com --description "federated project" project1
+
+openstack --insecure user create --domain my.trusted.idp.com --password-prompt user1
+
 openstack --insecure role create --domain my.trusted.idp.com user
+
+openstack --insecure role add \
+--project-domain my.trusted.idp.com --project project1 \
+--user-domain my.trusted.idp.com --user user1 \
+--role-domain my.trusted.idp.com user
