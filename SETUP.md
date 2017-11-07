@@ -40,16 +40,7 @@ openstack --insecure role create --domain my.trusted.idp.com user
 
 ## USAGE
 
-openstack --insecure project create  --domain my.trusted.idp.com --description "federated project" project1
-
-openstack --insecure user create --domain my.trusted.idp.com --password-prompt user1
-
-openstack --insecure role add \
---project-domain my.trusted.idp.com --project project1 \
---user-domain my.trusted.idp.com --user user1 \
---role-domain my.trusted.idp.com user
-
-Equivalent sentinel calls (via python-keystoneclient):
+Via python-keystoneclient:  
 
 ```python
 from keystoneauth1 import session
@@ -63,7 +54,16 @@ session = session.Session(auth=auth,
                            '/etc/sentinel/ssl/easy-rsa/easyrsa3/pki/private/127.0.0.1.key'))
 identity = client.Client(session=session)
 
-project = identity.projects.create(name="project1", description="federated project", domain="my.trusted.idp.com", enabled=True)
+project = identity.projects.create(name="project1", description="federated project",
+domain="my.trusted.idp.com", enabled=True)
 
-user = identity.users.create(name="user1", domain="my.trusted.idp.com", password="password", enabled=True)
+user = identity.users.create(name="user1", password="password", enabled=True)
+
+group = identity.groups.create(name="group1")
+
+identity.users.add_to_group(user, group)
+
+role = identity.roles.list()[0] 
+
+identity.roles.grant(role=role,group=group,project=project)
 ```
